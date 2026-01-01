@@ -1,0 +1,2 @@
+baseurl : "https://admin-demo.nopcommerce.com/"
+timeout: 5000
