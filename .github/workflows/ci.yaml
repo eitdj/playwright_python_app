@@ -1,13 +1,18 @@
 name: Playwright Tests
 
 on:
-  deployment_status:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success'
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -28,4 +33,4 @@ jobs:
       - name: Run tests
         run: pytest
         env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.pull_request.head.repo.html_url || github.event.repository.html_url }}
