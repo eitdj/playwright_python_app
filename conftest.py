@@ -4,9 +4,11 @@ import pytest
 def browser(playwright,pytestconfig):
     browser_name = pytestconfig.getoption("browser")
     headed = pytestconfig.getoption("headed")
-    browser = getattr(playwright,browser_name).launch(headless = not headed)
-    yield browser
-    browser.close()
+    if isinstance(browser_name, list):
+        browser_name = browser_name[0]
+    browsers = getattr(playwright,browser_name).launch(headless = not headed)
+    yield browsers
+    browsers.close()
 
 @pytest.fixture
 def page(browser):
