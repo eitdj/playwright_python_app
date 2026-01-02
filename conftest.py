@@ -4,7 +4,7 @@ import pytest
 def browser(playwright,pytestconfig):
     browser_name = pytestconfig.getoption("browser")
     headed = pytestconfig.getoption("headed")
-    browser = getattr(playwright,browser_name[0]).launch(headless = not headed)
+    browser = getattr(playwright,browser_name).launch(headless = not headed)
     yield browser
     browser.close()
 
