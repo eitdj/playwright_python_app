@@ -31,12 +31,4 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: playwright-traces
-        path: Summary/
-    - name: download artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: playwright-traces
-        path: documents/automation/reports
-
-    - name: List downloaded artifacts
-      run: ls -la documents/automation/reports
+        path: Summary
