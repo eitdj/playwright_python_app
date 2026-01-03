@@ -35,8 +35,8 @@ jobs:
     - name: download artifacts
       uses: actions/download-artifacts@v3
       with:
-      name: Summary
-      path: documets/automation/reports
+        name: Summary
+        path: documets/automation/reports
 
     - name: List downloaded artifacts
       run: ls -la documents/automation/reports
