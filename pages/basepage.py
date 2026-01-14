@@ -55,3 +55,11 @@ class BasePage:
         except Exception as e:
             self.logger.error(f"Error getting count of elements for locator {locator}: {e}")
             raise
+    
+    def scroll_to_the_element(self,locator):
+        try:
+            locator.scroll_into_view_if_needed()
+            self.logger.info(f"Scrolling to element with locator:{locator}")
+        except Exception as e:
+            self.logger.error(f"Error scrolling to elememt with locator {locator}:{e}")
+            raise
